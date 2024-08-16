@@ -2,7 +2,7 @@
  * @Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
  * @Date: 2024-08-14 20:04:47
  * @LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
- * @LastEditTime: 2024-08-14 23:35:24
+ * @LastEditTime: 2024-08-16 13:04:32
  * @FilePath: \24data\index.HTML
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,8 +11,43 @@
 <head>
     <meta charset="UTF-8" />
     <title>zes_oj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 设置 body 的字体和对齐方式 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left; /* 文本靠左 */
+            margin: 10px; /* 顶部和左边留有小间隔 */
+        }
+        /* 使用 Flexbox 布局来排列按钮 */
+        .button-container {
+            display: flex;
+            justify-content: flex-start; /* 按钮靠左对齐 */
+            gap: 20px; /* 按钮间距 */
+        }
+     
+        .visible-button {
+            background-color: #ffffff; 
+            border: none;
+            color: rgb(0, 0, 0); 
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px; 
+        }
+     
+        .visible-button:hover {
+            background-color: #c8d6e2;
+        }
+    </style>
 </head>
 <body>
+    <div class="button-container">
+        <a href="index.HTML" class="visible-button">主页</a>
+        <a href="make_question.html" class="visible-button">题目管理</a>
+        <a href="README.md" class="visible-button">关于</a>
+    </div>
     <h1>题目描述</h1>
     <p>长度为 n的<b>排列</b>是一个数组 p=[p1,p2,…,pn]，它包含了从 1到 n(含)的所有整数，而且每个数字都恰好出现一次。例如， p=[3,1,4,2,5]是长度为 5的排列。
 

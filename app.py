@@ -1,38 +1,21 @@
+'''
+Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
+Date: 2024-08-14 21:46:51
+LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
+LastEditTime: 2024-08-16 14:21:07
+FilePath: \Zes_oj\app.py
+Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+'''
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import subprocess
 import tempfile
+import build
+import run_code
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-
-
-def execute_python_code(code_str, input_data):
-    with tempfile.NamedTemporaryFile(suffix=".py", mode="w", delete=False) as temp_code_file:
-        temp_code_file.write(code_str)
-        code_file_name = temp_code_file.name
-    with tempfile.NamedTemporaryFile(suffix=".in", mode="w", delete=False) as temp_input_file:
-        temp_input_file.write(input_data)
-        input_file_name = temp_input_file.name
-    try:
-        result = subprocess.run(
-            ["python", code_file_name],
-            stdin=open(input_file_name, "r"),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
-        output = result.stdout.decode('utf-8')
-        error = result.stderr.decode('utf-8')
-    finally:
-        import os
-        os.remove(code_file_name)
-        os.remove(input_file_name)
-
-    if error:
-        return f"Error: {error}"
-    else:
-        return output
 
 
 def check(s):
@@ -50,7 +33,7 @@ def checkpython(data,python_code):
     with open(data, "r") as file:
         values = [int(line.strip()) for line in file]
 
-    result = execute_python_code(python_code, input_data)
+    result = run_code.execute_python_code(python_code, input_data)
     # print(result)
     lst =result.split('\n')
     g=[]
@@ -73,7 +56,7 @@ def checkpython(data,python_code):
         op+=1
     return True
 
-def main(python_code):
+def main1(python_code):
     for i in range(1,10):
         data=f"data/d{i}.in"
         if checkpython(data,python_code):
@@ -82,6 +65,18 @@ def main(python_code):
             return False
     return True
 
+
+def checkcpp(data,cpp_code):
+    return
+
+def main2(cpp_code):
+    for i in range(1,10):
+        data=f"data/d{i}.in"
+        if checkcpp(data,cpp_code):
+            print(f"AC to data{i}")
+        else:
+            return False
+    return True
 
 
 @app.route('/api/uppercase', methods=['POST'])
@@ -94,7 +89,7 @@ def execute_code():
     language = data.get('language')
     code = data.get('code')
     if language == 'Python':
-        if main(code):
+        if main1(code):
             return jsonify({"result": "AC"})
         else:
             return jsonify({"result": "WA"})
