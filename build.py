@@ -2,11 +2,13 @@
 Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
 Date: 2024-08-16 14:07:03
 LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
-LastEditTime: 2024-08-16 14:08:48
+LastEditTime: 2024-08-16 16:39:24
 FilePath: \Zes_oj\ce.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 import os
+import shutil
+
 
 
 def build_news(insert, data0, data1, data2):
@@ -96,7 +98,27 @@ return 0;
     <script src="solve.js"></script>
 </body>
 </html>''')
-        print(f"新内容已添加到文件'{file_path}'。")
+        print(f"ok for '{file_path}'。")
+        source_path = 'script.js'
+        destination_path = f'{insert+1}/script.js'
+        try:
+            shutil.copy(source_path, destination_path)
+            print("ac")
+        except IOError as e:
+            print(f"we can not ot{e}")
+        except Exception as e:
+            print(f"no {e}")
+
+        source_path = 'solve.js'
+        destination_path = f'{insert+1}/solve.js'
+        try:
+            shutil.copy(source_path, destination_path)
+            print("ac")
+        except IOError as e:
+            print(f"we can not build {e}")
+        except Exception as e:
+            print(f"no! {e}")
+        
 
 
 if __name__ == '__main__':
