@@ -2,7 +2,7 @@
 Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
 Date: 2024-08-14 21:46:51
 LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
-LastEditTime: 2024-08-16 16:40:33
+LastEditTime: 2024-08-16 18:33:20
 FilePath: \Zes_oj\app.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -100,7 +100,7 @@ def execute_code():
 
 
 @app.route('/submit_problem', methods=['POST'])
-def submit_problem():
+def submit_problem():#updata,上传新题目
     description = request.form['description'].replace('\r\n', '\n')
     input_example = request.form['inputExample'].replace('\r\n', '\n')
     output_example = request.form['outputExample'].replace('\r\n', '\n')
