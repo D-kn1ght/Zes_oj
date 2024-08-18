@@ -2,7 +2,7 @@
 Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
 Date: 2024-08-14 21:46:51
 LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
-LastEditTime: 2024-08-16 18:33:20
+LastEditTime: 2024-08-18 13:57:49
 FilePath: \Zes_oj\app.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -16,7 +16,26 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
+def read_value(file_path): #读题目数
+    try:
+        with open(file_path, 'r') as file:
+            value = file.read().strip()
+        return int(value)
+    except FileNotFoundError:
+        print('no')
+        return None
+    except Exception as e:
+        print(f"exception")
+        return None
 
+def write_value(file_path, value):#写
+
+    try:
+        with open(file_path, 'w') as file:
+            file.write(str(value))
+        print("ok")
+    except Exception as e:
+        print(f"wa")
 
 
 def check(s):
@@ -57,9 +76,9 @@ def checkpython(data,python_code):
         op+=1
     return True
 
-def main1(python_code):
+def main1(python_code,index_q):
     for i in range(1,10):
-        data=f"1000/data/d{i}.in"
+        data=f"{index_q}/data/d{i}.in"
         if checkpython(data,python_code):
             print(f"AC to data{i}")
         else:
@@ -90,7 +109,7 @@ def execute_code():
     language = data.get('language')
     code = data.get('code')
     if language == 'Python':
-        if main1(code):
+        if main1(code,1000):
             return jsonify({"result": "AC"})
         else:
             return jsonify({"result": "WA"})
@@ -105,7 +124,12 @@ def submit_problem():#updata,上传新题目
     input_example = request.form['inputExample'].replace('\r\n', '\n')
     output_example = request.form['outputExample'].replace('\r\n', '\n')
     
-    build.build_news(1000, description, input_example, output_example)
+    build.build_news(read_value('value.txt'), description, input_example, output_example)
+    new_value = int(read_value('value.txt')) + 1
+    write_value('value.txt', new_value)                     #更新题目数量
+
+
+
     return jsonify({
         "status": "success",
         "description": description,

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>zes_oj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .visible-button {
+            background-color: #ffffff;
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .visible-button:hover {
+            background-color: #c8d6e2;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <a href="index.HTML" class="visible-button">主页</a>
+        <a href="make_question.html" class="visible-button">题目管理</a>
+        <a href="README.md" class="visible-button">关于</a>
+    </div>
+    <h1>题目描述</h1>
+    <p>本题为a+b</p>
+    <hr>
+    <h1>输入样例</h1>
+    <p>
+        <textarea id="myText" rows="10" cols="50">1 1 
+2 1
+3 3</textarea>
+        <button onclick="copyText()">复制文本</button>
+        <script src="script.js"></script>
+    </p>
+    <h1>输出样例</h1>
+    <hr>
+    <p>
+        <textarea id="myText" rows="10" cols="50">
+2
+3
+6
+        </textarea>
+    </p>
+    <h1>提示</h1>
+    <h1>答案提交</h1>
+    <div>
+        <select id="languageSelect" onchange="updateText()">
+            <option value="C++">C++</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+        </select>
+        <br><br>
+        <textarea id="codeText" rows="30" cols="100">#include<iostream>
+int main() {
+std::cout << "Hello, World!";
+return 0;
+}</textarea>
+        <br>
+        <button onclick="displayResult()">提交</button>
+        <p id="result"></p>
+    </div>
+    <script src="solve.js"></script>
+</body>
+</html>
