@@ -7,9 +7,10 @@ FilePath: \Zes_oj\app.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import subprocess
 import tempfile
+from flask_cors import CORS
+
 import build
 import run_code
 app = Flask(__name__)
