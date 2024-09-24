@@ -1,8 +1,8 @@
 '''
 Author: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
 Date: 2024-08-14 21:46:51
-LastEditors: Z-Es-0 141395766+Z-Es-0@users.noreply.github.com
-LastEditTime: 2024-08-18 13:57:49
+LastEditors: Z-Es-0 zes18642300628@qq.com
+LastEditTime: 2024-09-17 14:18:36
 FilePath: \Zes_oj\app.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -64,8 +64,6 @@ def checkpython(data,python_code):
     op=0
     for i in range(1,len(values)):
         k= values[i]
-        # print(k)
-        # print(g[op])
         if (k % 10 == 1 or k % 10 == 2 or k % 10 == 3) and len(str(k))<=1:
             if g[op][0] != -1:
                 return False
